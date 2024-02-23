@@ -2,26 +2,11 @@ name: Deploy
 
 on:
   push:
-    tags:
-      - release
-
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: 'pages'
-  cancel-in-progress: true
+    branches:
+      - main
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
     runs-on: ubuntu-latest
 
     steps:
@@ -34,7 +19,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm run install
+        run: npm install
 
       - name: Build
         run: npm run build
