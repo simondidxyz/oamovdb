@@ -3,7 +3,7 @@ import axios from 'axios'
 const apiKey = '8e00c418'
 
 const api = axios.create({
-  baseURL: 'https://omdbapi.com',
+  baseURL: 'https://www.omdbapi.com',
   params: {
     apiKey,
   },
